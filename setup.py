@@ -1,23 +1,23 @@
-"""Installer for the conduit package."""
+"""Installer for the getoffmylawn package."""
 
 from setuptools import find_packages
 from setuptools import setup
 
 setup(
-    name="conduit",
+    name="getoffmylawn",
     version="0.1",
-    description="Pyramid and OpenAPI3 based RealWorld.io example.",
+    description="Pyramid URL redirector",
     classifiers=[
         "Programming Language :: Python",
-        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
         "Framework :: Pyramid",
         "Topic :: Internet :: WWW/HTTP",
         "Topic :: Internet :: WWW/HTTP :: WSGI :: Application",
         "License :: MIT",
     ],
-    author="niteo.co",
-    author_email="info@niteo.co",
-    url="http://github.com/niteoweb/pyramid-realworld-example-app",
+    author="David Glick",
+    author_email="david@glicksoftware.com",
+    url="http://github.com/davisagli/getoffmylawn",
     keywords="pyramid openapi realworld",
     license="MIT",
     packages=find_packages("src", exclude=["ez_setup"]),
@@ -26,7 +26,7 @@ setup(
     zip_safe=False,
     entry_points="""\
     [paste.app_factory]
-    main = conduit:main
+    main = getoffmylawn:main
     """,
-    test_suite="conduit",
+    test_suite="getoffmylawn",
 )
