@@ -18,6 +18,7 @@ depends_on = None
 
 
 def upgrade():  # noqa: D103
+    op.execute('CREATE EXTENSION "pgcrypto"')
     op.create_table(
         "users",
         sa.Column(
