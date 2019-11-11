@@ -1,5 +1,3 @@
--e ..
-
 argon2_cffi
 gunicorn
 mypy_extensions
