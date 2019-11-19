@@ -2,6 +2,7 @@
 
 from getoffmylawn.openapi import object_or_404
 from getoffmylawn.urls.models import Url
+from pyramid.httpexceptions import HTTPFound
 from pyramid.request import Request
 from pyramid.view import view_config
 from slugify import slugify
@@ -59,3 +60,11 @@ def delete(request: Request) -> None:
     )
     request.db.delete(url)
     return None
+
+
+@view_config(route_name="redirect")
+def redirect(request: Request) -> None:
+    """Redirect to target."""
+    slug = request.matchdict["slug"]
+    url = object_or_404(Url.by_slug(slug, db=request.db))
+    raise HTTPFound(url.href)

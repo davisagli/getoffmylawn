@@ -1,7 +1,6 @@
 """Models related to auth."""
 
 from __future__ import annotations
-from passlib.hash import argon2
 from pyramid.request import Request
 from pyramid_deferred_sqla import Base
 from pyramid_deferred_sqla import Model
@@ -29,7 +28,6 @@ class User(Model):
         }
 
     username = Column(String, nullable=False, unique=True)
-    password_hash = Column(String, nullable=False)
 
     @classmethod
     def by_id(cls: t.Type[User], uuid: str, db: Session) -> t.Optional[User]:
@@ -44,7 +42,3 @@ class User(Model):
         q = db.query(cls)
         q = q.filter(cls.username == username)
         return q.one_or_none()
-
-    def verify_password(self, password: str) -> bool:
-        """Verify given password against the hash stored in db."""
-        return argon2.verify(password, self.password_hash)

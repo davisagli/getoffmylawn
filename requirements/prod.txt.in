@@ -1,7 +1,6 @@
-argon2_cffi
+authomatic
 gunicorn
 mypy_extensions
-passlib
 psycopg2-binary
 pyramid
 git+https://github.com/niteoweb/pyramid_deferred_sqla.git#egg=pyramid_deferred_sqla

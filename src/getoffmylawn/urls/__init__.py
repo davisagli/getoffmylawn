@@ -7,3 +7,4 @@ def includeme(config: Configurator) -> None:
     """Pyramid knob."""
     config.add_route("urls", "/api/urls")
     config.add_route("url", "/api/urls/{slug}")
+    config.add_route("redirect", "/{slug}")

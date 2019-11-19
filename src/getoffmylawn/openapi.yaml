@@ -7,8 +7,8 @@ info:
   version: 1.0.0
   title: getoffmylawn API
   contact:
-    name: RealWorld
-    url: https://realworld.io
+    name: David Glick
+    url: https://github.com/davisagli
   license:
     name: MIT License
     url: https://opensource.org/licenses/MIT

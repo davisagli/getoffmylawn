@@ -44,9 +44,6 @@ def configure(config: Configurator) -> None:
     # Configure authentication & authorization
     config.include(".auth")
 
-    # Configure content
-    config.include(".urls")
-
     # Find and configure all decorated objects
     config.scan(
         ignore=[
@@ -54,13 +51,15 @@ def configure(config: Configurator) -> None:
             "getoffmylawn.auth.tests",
             "getoffmylawn.scripts.tests",
             "getoffmylawn.tests",
+            "getoffmylawn.urls",
             "getoffmylawn.urls.tests",
         ]
     )
 
-    # Make sure all config so far is loaded, then add our catch-all
+    # Configure content
     config.commit()
-    config.add_route("redirect", "/{slug}")
+    config.include(".urls")
+    config.scan("getoffmylawn.urls")
 
 
 def main(global_config: t.Dict[str, str], **settings: str) -> Router:
@@ -74,7 +73,9 @@ def main(global_config: t.Dict[str, str], **settings: str) -> Router:
     settings = expandvars_dict(settings)
 
     # Configure Pyramid
-    config = Configurator(settings=settings, root_factory="getoffmylawn.auth.RootFactory")
+    config = Configurator(
+        settings=settings, root_factory="getoffmylawn.auth.RootFactory"
+    )
     configure(config)
 
     # Up, Up and Away!
