@@ -59,7 +59,7 @@ def configure(config: Configurator) -> None:
     # Configure content
     config.commit()
     config.include(".urls")
-    config.scan("getoffmylawn.urls")
+    config.scan("getoffmylawn.urls", ignore=["getoffmylawn.urls.tests"])
 
 
 def main(global_config: t.Dict[str, str], **settings: str) -> Router:
